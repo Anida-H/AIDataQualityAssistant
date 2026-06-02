@@ -2,18 +2,22 @@
 
 ## Overview
 
-AI Data Quality & Dataset Analysis Agent is an intelligent Streamlit application designed to help users analyze, clean, and interact with datasets using AI-powered agents.
+AI Data Quality & Dataset Analysis Agent is an AI-powered application built with Streamlit, Pandas, and OpenAI.
 
-The project combines:
+The project helps users analyze, clean, and interact with datasets through two specialized AI agents:
 
-* Data Quality Analysis
-* Automated Data Cleaning
-* Dataset Chat
-* Machine Learning Readiness Assessment
-* OpenAI-Powered Intent Detection
-* Context-Aware AI Agent Memory
+* **Data Quality Agent** – focuses on data quality assessment, cleaning recommendations, and machine learning readiness.
+* **Dataset Chat Agent** – allows users to ask natural language questions directly about the dataset and receive analytical insights.
 
-The application allows users to upload any CSV dataset and receive insights about data quality, preprocessing requirements, and business-related questions through natural language.
+The application combines traditional data analysis techniques with OpenAI-powered intent routing and context-aware conversations.
+
+---
+
+## Live Demo
+
+Streamlit Deployment:
+
+https://aidataqualityassistant-fjsaf9op9jhbgtyzexdtdg.streamlit.app/
 
 ---
 
@@ -21,41 +25,85 @@ The application allows users to upload any CSV dataset and receive insights abou
 
 ### Data Quality Analysis
 
-The application automatically analyzes uploaded datasets and provides:
+The application automatically performs:
 
 * Missing Values Detection
 * Duplicate Detection
 * Outlier Detection
 * Data Type Analysis
-* Data Quality Score (0–100)
+* Data Quality Score Calculation
+* Dataset Overview
+
+---
 
 ### AI Data Quality Agent
 
-The Data Quality Agent can answer questions such as:
+The Data Quality Agent helps users understand the quality of their dataset.
 
-* What should I clean first?
-* Why is the quality score low?
-* What preprocessing steps do you recommend?
-* Is this dataset suitable for machine learning?
-* Which columns are most problematic?
-* Explain the missing values issue.
-* What should I do after cleaning?
+Capabilities:
+
+* Detect missing values
+* Detect duplicates
+* Detect outliers
+* Explain quality issues
+* Recommend cleaning actions
+* Assess ML readiness
+* Suggest preprocessing steps
+* Explain quality score
+* Maintain conversation context
+* Handle follow-up questions
+
+Example questions:
+
+```text
+What should I clean first?
+Why?
+Explain in more detail.
+What should I do after that?
+Which columns are problematic?
+How can I improve the quality score?
+Is this dataset ready for machine learning?
+What preprocessing steps do you recommend?
+```
+
+---
 
 ### Dataset Chat Agent
 
-The Dataset Chat Agent allows users to ask questions directly about the uploaded data.
+The Dataset Chat Agent allows users to interact directly with the uploaded dataset using natural language.
 
-Examples:
+Capabilities:
 
-* What is the average age?
-* What is the maximum income?
-* Which columns are numeric?
-* How many rows are there?
-* Which country spends the most?
-* Which country has the highest average spending?
-* Show top 5 customers by total_spent.
-* Who are the biggest spenders?
-* Which category appears most frequently?
+* Count records
+* List columns
+* Identify numeric columns
+* Calculate averages
+* Calculate minimum and maximum values
+* Count categorical values
+* Find top records
+* Perform group-based analysis
+* Answer business-oriented questions
+
+Example questions:
+
+```text
+How many rows are in the dataset?
+List all columns.
+Which columns are numeric?
+What is the average age?
+What is the average income?
+What is the maximum total_spent?
+How many customers are from Kosovo?
+Who are the biggest spenders?
+Show top 10 customers by spending.
+Which country spends the most?
+Which country has the highest average spending?
+Which product category appears most frequently?
+Which subscription type is most common?
+Which country generates the most revenue?
+```
+
+---
 
 ### Auto Data Cleaning
 
@@ -64,42 +112,55 @@ The application can automatically:
 * Remove duplicate rows
 * Fill missing numeric values using median
 * Fill missing text values using "Unknown"
-* Export a cleaned CSV file
-
-### Conversation Memory
-
-The AI agent remembers previous questions and supports context-aware follow-up questions such as:
-
-* Why?
-* Explain more.
-* What about duplicates?
-* And after that?
+* Generate a cleaned dataset
+* Download the cleaned CSV file
 
 ---
 
-## Architecture
+### Conversation Memory
+
+The Data Quality Agent supports context-aware follow-up questions.
+
+Examples:
+
+```text
+What should I clean first?
+Why?
+Explain more.
+What should I do after that?
+```
+
+The agent remembers previous interactions and provides contextual answers.
+
+---
+
+## AI Agent Architecture
 
 ### Data Quality Agent
 
+```text
 User Question
-↓
+      ↓
 OpenAI Intent Router
-↓
+      ↓
 Tool Selection
-↓
-Data Analysis Tools
-↓
+      ↓
+Data Quality Tools
+      ↓
 Response
+```
 
 ### Dataset Chat Agent
 
+```text
 User Question
-↓
+      ↓
 OpenAI Dataset Router
-↓
-Pandas Analysis
-↓
+      ↓
+Pandas Analysis Engine
+      ↓
 Response
+```
 
 ---
 
@@ -120,7 +181,7 @@ Response
 
 ### AI
 
-* OpenAI API (GPT-4o-mini)
+* OpenAI GPT-4o-mini
 * Intent Routing
 * Context-Aware Agent Memory
 
@@ -133,7 +194,7 @@ Response
 ## Project Structure
 
 ```text
-ai-data-quality-assistant/
+AIDataQualityAssistant/
 │
 ├── app.py
 │
@@ -145,17 +206,23 @@ ai-data-quality-assistant/
 │
 ├── tools/
 │   ├── data_quality_tools.py
-│   └── __init__.py
 │
-├── .env
+├── data/
+│   ├── sample_data.csv
+│   ├── sample_data_2.csv
+│   └── dirty_customer_data_50k.csv
+│
+├── screenshots/
+│   ├── screenshot1.png
+│   ├── screenshot2.png
+│   └── screenshot3.png
+|   |__ screenshot4.png
+│
 ├── requirements.txt
+├── .env.example
+├── .gitignore
 └── README.md
 ```
-
----
-
-Live Demo
-https://aidataqualityassistant-fjsaf9op9jhbgtyzexdtdg.streamlit.app/
 
 ---
 
@@ -164,8 +231,8 @@ https://aidataqualityassistant-fjsaf9op9jhbgtyzexdtdg.streamlit.app/
 Clone the repository:
 
 ```bash
-git clone <repository_url>
-cd ai-data-quality-assistant
+git clone https://github.com/Anida-H/AIDataQualityAssistant.git
+cd AIDataQualityAssistant
 ```
 
 Install dependencies:
@@ -177,7 +244,7 @@ pip install -r requirements.txt
 Create a `.env` file:
 
 ```env
-OPENAI_API_KEY=your_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 Run the application:
@@ -190,59 +257,26 @@ streamlit run app.py
 
 ## Sample Dataset Included
 
-The project includes a generated dataset:
+The repository contains a generated dataset:
 
 ```text
 Sample_customer_data.csv
-
 ```
 
 Dataset characteristics:
 
 * 50,800 rows
 * 15 columns
-* 800 duplicate rows
 * Missing values
+* Duplicate rows
 * Outliers
 * Invalid records
 * Customer spending information
 * Country and city information
-* Subscription data
+* Subscription information
 * Churn risk information
 
-The dataset was intentionally designed to test Data Quality and AI Agent capabilities.
-
----
-
-## Example Questions for the Included Dataset
-
-### Data Quality Agent
-
-* What should I clean first?
-* Why?
-* Explain the missing values issue.
-* What preprocessing steps do you suggest?
-* Is this dataset suitable for machine learning?
-* Which columns are most problematic?
-* What should I do after cleaning?
-* Why does the quality score decrease?
-* Generate a cleaning strategy.
-
-### Dataset Chat Agent
-
-* What is the average age?
-* What is the average income?
-* What is the maximum total_spent?
-* Which country spends the most?
-* Which country has the highest average spending?
-* Show top 5 customers by total_spent.
-* Who are the biggest spenders?
-* Which subscription type is most common?
-* How many customers are from Kosovo?
-* Which product category appears most frequently?
-* Which city has the highest total spending?
-* Which country generates the most revenue?
-* What are the top 10 customers by spending?
+The dataset was intentionally designed to test AI-powered data quality workflows.
 
 ---
 
@@ -251,36 +285,37 @@ The dataset was intentionally designed to test Data Quality and AI Agent capabil
 The application can be used before building machine learning models to:
 
 * Assess data quality
-* Identify missing values
+* Detect missing values
 * Detect duplicates
 * Detect outliers
 * Evaluate ML readiness
 * Generate preprocessing recommendations
+* Prepare datasets for modeling
 
 ---
 
 ## Future Improvements
 
-Potential future enhancements include:
+Potential future enhancements:
 
 * PDF Report Generation
-* Automated Insight Generation
-* Interactive Visualizations
-* Natural Language SQL Queries
+* Advanced Data Profiling
+* Interactive AI Visualizations
+* Automatic Insight Generation
 * Predictive Modeling Assistant
 * Multi-file Analysis
+* SQL Query Generation
 * Dashboard Export
-* Advanced Data Profiling
 
 ---
 
 ## Author
 
-Created as a voluntary AI  Engineering project to demonstrate:
+Created as a personal AI  Engineering project to demonstrate:
 
-* Data Analysis
 * Data Quality Assessment
 * AI Agent Design
 * OpenAI Integration
 * Streamlit Development
+* Dataset Analytics
 * Machine Learning Preparation Workflows
