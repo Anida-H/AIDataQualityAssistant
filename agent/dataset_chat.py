@@ -104,7 +104,7 @@ def answer_dataset_question(question, df):
             f"'{top_group}' with {top_value:.2f}."
         )
 
-    # Highest average spending by group
+       # Highest average spending by group
     if llm_intent == "group_average" or (
         "highest average" in question_lower
         or "average spending" in question_lower
@@ -132,7 +132,10 @@ def answer_dataset_question(question, df):
         top_group = grouped.index[0]
         top_value = grouped.iloc[0]
 
-        return top_rows[display_cols]
+        return (
+            f"The '{group_col}' with the highest average '{amount_col}' is "
+            f"'{top_group}' with {top_value:.2f}."
+        )
 
     # Top N rows by numeric column
     if llm_intent == "top_n" or "top" in question_lower:
@@ -158,10 +161,8 @@ def answer_dataset_question(question, df):
 
         display_cols = select_display_columns(df, target_numeric_col)
 
-        return (
-            f"Top {n} rows by '{target_numeric_col}':\n\n"
-            f"{top_rows[display_cols].to_string(index=False)}"
-        )
+     
+        return top_rows[display_cols]
 
     return (
         "I can answer questions about rows, columns, numeric columns, "
