@@ -1,0 +1,11 @@
+customer_id,name,email,age,country,total_spent
+1,Arta,arta@example.com,24,Kosovo,120.50
+2,Blend,blend@example.com,31,Albania,250.00
+3,Elira,,28,Kosovo,180.20
+4,Dion,dion@example.com,,North Macedonia,90.00
+5,Lira,lira@example.com,35,Kosovo,300.00
+5,Lira,lira@example.com,35,Kosovo,300.00
+6,Noa,,29,Albania,150.75
+7,Ana,ana@example.com,200,Kosovo,500.00
+8,Erion,erion@example.com,27,,80.00
+9,Era,era@example.com,22,Kosovo,
