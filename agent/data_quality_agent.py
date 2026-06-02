@@ -24,6 +24,17 @@ def resolve_follow_up_question(question, context):
 
     if last_interaction is None:
         return question
+    
+    if (
+        "why" in question_lower
+        or "explain" in question_lower
+        or "more detail" in question_lower
+        or "more details" in question_lower
+        or "tell me more" in question_lower
+        or "elaborate" in question_lower
+        ):
+     return "__EXPLAIN_LAST_RECOMMENDATION__"
+    
 
     if question_lower in ["why", "why?", "explain", "explain more", "more"]:
         last_tool = last_interaction["tool"]
