@@ -154,6 +154,11 @@ ai-data-quality-assistant/
 
 ---
 
+Live Demo
+https://aidataqualityassistant-fjsaf9op9jhbgtyzexdtdg.streamlit.app/
+
+---
+
 ## Installation
 
 Clone the repository:
@@ -188,7 +193,8 @@ streamlit run app.py
 The project includes a generated dataset:
 
 ```text
-dirty_customer_data_50k.csv
+Sample_customer_data.csv
+
 ```
 
 Dataset characteristics:
@@ -270,7 +276,7 @@ Potential future enhancements include:
 
 ## Author
 
-Created as a voluntary AI and Data Engineering project to demonstrate:
+Created as a voluntary AI  Engineering project to demonstrate:
 
 * Data Analysis
 * Data Quality Assessment
